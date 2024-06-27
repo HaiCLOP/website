@@ -127,7 +127,7 @@
     messagingSenderId: "261662257326",
     appId: "1:261662257326:web:a4654bf3c69c83cda4fd3f",
     measurementId: "G-2PLD4VK7NS"
-};
+            };
 
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
@@ -192,8 +192,14 @@
             const password = document.getElementById('register-password').value;
             auth.createUserWithEmailAndPassword(email, password)
                 .then(userCredential => {
-                    authModal.style.display = 'none';
-                    loginBtn.style.display = 'none'; // Hide login button
+                    userCredential.user.sendEmailVerification({
+                        url: 'http://your-domain.com/verify.html'  // Replace with your verification page URL
+                    }).then(() => {
+                        authModal.style.display = 'none';
+                        alert('Verification email sent. Please check your email.');
+                    }).catch(error => {
+                        alert(error.message);
+                    });
                 })
                 .catch(error => {
                     alert(error.message);
