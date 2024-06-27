@@ -1,0 +1,258 @@
+/* Resetting default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0F0F0F; /* Dark background */
+    color: #FFFFFF; /* Light text */
+}
+
+.navbar {
+    background-color: #0F0F0F; /* Dark background */
+    padding: 20px 0;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 1.5em;
+    margin: 0;
+    color: #00FFA2; /* Neon green */
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #00FFA2; /* Neon green */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #00FFA2; /* Neon green */
+    color: #181818; /* Dark background */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #00D68F; /* Lighter green */
+}
+
+.store {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.store-title {
+    font-size: 2.5em;
+    color: #00FFA2; /* Neon green */
+    margin-bottom: 10px;
+}
+
+.store-subtitle {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.product {
+    background-color: #1A1A1A;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+    display: inline-block;
+    vertical-align: top;
+    width: 300px;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+.product.most-popular {
+    border: 2px solid #00FFA2; /* Highlight most popular */
+}
+
+.product h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 2em;
+    color: #FFD700; /* Gold */
+    margin-bottom: 10px;
+}
+
+.product-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+}
+
+.product-features li {
+    margin-bottom: 10px;
+}
+
+.auth-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.auth-modal-content {
+    background-color: #1A1A1A;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+}
+
+.close-btn {
+    color: #AAAAAA;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input {
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 1.2em;
+    border-radius: 5px;
+    border: 1px solid #888;
+}
+
+form button {
+    padding: 10px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    border: none;
+    background-color: #00FFA2;
+    color: #181818;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #00D68F;
+}
+
+/* Trusted Servers Section */
+.trusted-servers {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.trusted-title {
+    font-size: 2em;
+    color: #00FFA2; /* Neon green */
+    margin-bottom: 20px;
+}
+
+.servers {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.server-box {
+    background-color: #1A1A1A;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 200px; /* Adjusted for a uniform size */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.server-box:hover {
+    transform: translateY(-10px);
+}
+
+.server-logo img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    border: 2px solid #00FFA2; /* Add a border for emphasis */
+}
+
+.server-details {
+    color: #FFFFFF;
+}
+
+.server-name {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.server-members {
+    font-size: 1em;
+    color: #00FFA2; /* Neon green */
+}

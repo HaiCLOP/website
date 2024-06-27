@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Bot Cart</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo-container">
+                <img src="Azure.png" alt="Azure Bot Logo" class="logo">
+                <h1 class="logo-text">Azure Bot</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#commands">Commands</a></li>
+                <li><a href="#support">Support</a></li>
+                <li><a href="index.html#store">Store</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <!-- Cart Section -->
+    <section class="cart">
+        <div class="container">
+            <h2 class="cart-title">Your Cart</h2>
+            <div class="cart-items">
+                <!-- Cart items will be displayed here -->
+            </div>
+            <div class="cart-total">
+                <h3>Total: <span id="cart-total-price">0.00$</span></h3>
+                <button class="btn checkout-btn">Checkout</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Display Cart Items
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const cartItemsContainer = document.querySelector('.cart-items');
+        const cartTotalPrice = document.getElementById('cart-total-price');
+        let total = 0;
+
+        cartItems.forEach((item, index) => {
+            const cartItem = document.createElement('div');
+            cartItem.classList.add('cart-item');
+            cartItem.innerHTML = `
+                <p>${item.product}</p>
+                <p>${item.price}$</p>
+                <button class="btn remove-btn" data-index="${index}">Remove</button>
+            `;
+            cartItemsContainer.appendChild(cartItem);
+            total += parseFloat(item.price);
+        });
+
+        cartTotalPrice.textContent = `${total.toFixed(2)}$`;
+
+        // Remove item from cart
+        document.querySelectorAll('.remove-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const index = button.getAttribute('data-index');
+                cartItems.splice(index, 1);
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                location.reload(); // Refresh the page to update the cart
+            });
+        });
+
+        // Checkout button
+        document.querySelector('.checkout-btn').addEventListener('click', () => {
+            if (cartItems.length > 0) {
+                alert('Proceed to checkout');
+            } else {
+                alert('Your cart is empty');
+            }
+        });
+
+        // Check if user is signed in
+        const auth = firebase.auth();
+        const loginBtn = document.getElementById('login-btn');
+
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                loginBtn.style.display = 'none'; // Hide login button if signed in
+            } else {
+                loginBtn.style.display = 'block'; // Show login button if not signed in
+            }
+            
+        });
+
+        
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-auth-compat.js"></script>
+
+
+</body>
+</html>

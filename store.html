@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Bot Store</title>
+    <link rel="stylesheet" href="store.css">
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-auth-compat.js"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo-container">
+                <img src="Azure.png" alt="Azure Bot Logo" class="logo">
+                <h1 class="logo-text">Azure Bot</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#commands">Commands</a></li>
+                <li><a href="#support">Support</a></li>
+                <li><a href="#store">Store</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+            <button id="login-btn" class="btn">Login</button>
+        </div>
+    </nav>
+
+    <!-- Store Section -->
+    <section id="store" class="store">
+        <div class="container">
+            <h2 class="store-title">Take Your Server to the Next Level</h2>
+            <p class="store-subtitle">Unlock the full potential of your server by getting unrestricted access to all features and plugins</p>
+            <div class="products">
+                <div class="product most-popular">
+                    <h3>Lifetime</h3>
+                    <p class="price">89.99$</p>
+                    <p>USD / lifetime, paid only once</p>
+                    <ul class="product-features">
+                        <li>Biggest savings</li>
+                        <li>Fully refundable for 7 days</li>
+                        <li>Transferable to another server</li>
+                        <li>Bot Personalizer option included</li>
+                    </ul>
+                    <button class="btn add-to-cart-btn" data-product="Lifetime Key" data-price="89.99">Get the Lifetime plan</button>
+                </div>
+                <div class="product">
+                    <h3>Yearly</h3>
+                    <p class="price">4.17$</p>
+                    <p>USD / month, 49.99$ billed every year</p>
+                    <ul class="product-features">
+                        <li>Save 65%</li>
+                        <li>Fully refundable for 7 days</li>
+                        <li>Transferable to another server</li>
+                        <li>Bot Personalizer option included</li>
+                    </ul>
+                    <button class="btn add-to-cart-btn" data-product="Yearly Key" data-price="49.99">Get the Yearly plan</button>
+                </div>
+                <div class="product">
+                    <h3>Monthly</h3>
+                    <p class="price">11.99$</p>
+                    <p>USD / month, 11.99$ billed every month</p>
+                    <ul class="product-features">
+                        <li>Save 0%</li>
+                        <li>Fully refundable for 7 days</li>
+                        <li>Transferable to another server</li>
+                    </ul>
+                    <button class="btn add-to-cart-btn" data-product="Monthly Key" data-price="11.99">Get the Monthly plan</button>
+                </div>
+            </div>
+            <button class="btn checkout-btn">Checkout</button>
+        </div>
+    </section>
+
+    <!-- Trusted Servers Section -->
+    <section class="trusted-servers">
+        <div class="container">
+            <h2 class="trusted-title">MEE6 is trusted and used by more than 21 Million servers</h2>
+            <div class="servers">
+                <!-- Server details go here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Popup Notification -->
+    <div id="popup" class="popup">
+        <span class="close-btn">&times;</span>
+        <p id="popup-message"></p>
+    </div>
+
+    <!-- Authentication Modal -->
+    <div id="auth-modal" class="auth-modal">
+        <div class="auth-modal-content">
+            <span class="close-btn">&times;</span>
+            <div id="auth-forms">
+                <form id="login-form">
+                    <h2>Login</h2>
+                    <input type="email" id="login-email" placeholder="Email" required>
+                    <input type="password" id="login-password" placeholder="Password" required>
+                    <button type="submit" class="btn">Login</button>
+                    <button type="button" id="google-login-btn" class="btn google-btn">Continue with Google</button>
+                    <p>Don't have an account? <span id="show-register">Register</span></p>
+                </form>
+                <form id="register-form" style="display:none;">
+                    <h2>Register</h2>
+                    <input type="email" id="register-email" placeholder="Email" required>
+                    <input type="password" id="register-password" placeholder="Password" required>
+                    <button type="submit" class="btn">Register</button>
+                    <button type="button" id="google-register-btn" class="btn google-btn">Continue with Google</button>
+                    <p>Already have an account? <span id="show-login">Login</span></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+    apiKey: "AIzaSyAzF7BjgfcfysOhc8QOkDGW42RepnXyZwQ",
+    authDomain: "azure-bot-d18ed.firebaseapp.com",
+    projectId: "azure-bot-d18ed",
+    storageBucket: "azure-bot-d18ed.appspot.com",
+    messagingSenderId: "261662257326",
+    appId: "1:261662257326:web:a4654bf3c69c83cda4fd3f",
+    measurementId: "G-2PLD4VK7NS"
+};
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Firebase Authentication
+        const auth = firebase.auth();
+        const provider = new firebase.auth.GoogleAuthProvider();
+
+        // Elements
+        const loginBtn = document.getElementById('login-btn');
+        const authModal = document.getElementById('auth-modal');
+        const closeBtn = document.querySelector('.close-btn');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const showRegister = document.getElementById('show-register');
+        const showLogin = document.getElementById('show-login');
+        const googleLoginBtn = document.getElementById('google-login-btn');
+        const googleRegisterBtn = document.getElementById('google-register-btn');
+
+        // Show login modal
+        loginBtn.addEventListener('click', () => {
+            authModal.style.display = 'block';
+            loginForm.style.display = 'block';
+            registerForm.style.display = 'none';
+        });
+
+        // Show register form
+        showRegister.addEventListener('click', () => {
+            loginForm.style.display = 'none';
+            registerForm.style.display = 'block';
+        });
+
+        // Show login form
+        showLogin.addEventListener('click', () => {
+            loginForm.style.display = 'block';
+            registerForm.style.display = 'none';
+        });
+
+        // Close modal
+        closeBtn.addEventListener('click', () => {
+            authModal.style.display = 'none';
+        });
+
+        // Handle form submission
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            auth.signInWithEmailAndPassword(email, password)
+                .then(userCredential => {
+                    authModal.style.display = 'none';
+                    loginBtn.style.display = 'none'; // Hide login button
+                })
+                .catch(error => {
+                    alert(error.message);
+                });
+        });
+
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            auth.createUserWithEmailAndPassword(email, password)
+                .then(userCredential => {
+                    authModal.style.display = 'none';
+                    loginBtn.style.display = 'none'; // Hide login button
+                })
+                .catch(error => {
+                    alert(error.message);
+                });
+        });
+
+        // Google sign-in
+        googleLoginBtn.addEventListener('click', () => {
+            auth.signInWithPopup(provider)
+                .then(result => {
+                    authModal.style.display = 'none';
+                    loginBtn.style.display = 'none'; // Hide login button
+                })
+                .catch(error => {
+                    alert(error.message);
+                });
+        });
+
+        googleRegisterBtn.addEventListener('click', () => {
+            auth.signInWithPopup(provider)
+                .then(result => {
+                    authModal.style.display = 'none';
+                    loginBtn.style.display = 'none'; // Hide login button
+                })
+                .catch(error => {
+                    alert(error.message);
+                });
+        });
+    </script>
+</body>
+</html>

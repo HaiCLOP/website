@@ -1,0 +1,160 @@
+/* styles.css */
+
+/* Resetting default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0F0F0F; /* Dark background */
+    color: #FFFFFF; /* Light text */
+}
+
+.navbar {
+    background-color: #0F0F0F; /* Dark background */
+    padding: 20px 0;
+    text-align: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 1.5em;
+    margin: 0;
+    color: #00FFA2; /* Neon green */
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.nav-links li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #00FFA2; /* Neon green */
+}
+
+.hero {
+    background-image: url('background.jpg'); /* Background image */
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding: 100px 0;
+    color: #FFFFFF; /* Light text */
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #00FFA2; /* Neon green */
+    color: #181818; /* Dark background */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #00D68F; /* Lighter green */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.about, .commands, .support {
+    padding: 50px 0;
+}
+
+.about h2, .commands h2, .support h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #00FFA2; /* Neon green */
+}
+
+.about p, .commands p, .support p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.commands ol {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+}
+
+.commands ol li {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.commands ol li code {
+    font-weight: bold;
+    background-color: #282828; /* Dark grey */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Donate Section */
+.donate {
+    padding: 50px 0;
+}
+
+.donate h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #00FFA2; /* Neon green */
+}
+
+.donate p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.donate .btn {
+    background-color: #00ffa2; /* Neon green */
+    color: #181818; /* Dark background */
+    transition: background-color 0.3s ease;
+}
+
+.donate .btn:hover {
+    background-color: #00D68F; /* Lighter green */
+}

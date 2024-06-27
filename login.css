@@ -1,0 +1,136 @@
+/* Resetting default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0F0F0F; /* Dark background */
+    color: #FFFFFF; /* Light text */
+}
+
+.navbar {
+    background-color: #0F0F0F; /* Dark background */
+    padding: 20px 0;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 1.5em;
+    margin: 0;
+    color: #00FFA2; /* Neon green */
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #00FFA2; /* Neon green */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #00FFA2; /* Neon green */
+    color: #181818; /* Dark background */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #00D68F; /* Lighter green */
+}
+
+.auth-section {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.auth-section h2 {
+    font-size: 2.5em;
+    color: #00FFA2; /* Neon green */
+    margin-bottom: 20px;
+}
+
+.auth-section form {
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-section form input {
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 1.2em;
+    border-radius: 5px;
+    border: 1px solid #888;
+}
+
+.auth-section form button {
+    padding: 10px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    border: none;
+    background-color: #00FFA2;
+    color: #181818;
+    cursor: pointer;
+}
+
+.auth-section form button:hover {
+    background-color: #00D68F;
+}
+
+.auth-section p {
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+.auth-section p a {
+    color: #00FFA2;
+    text-decoration: none;
+}
+
+.auth-section p a:hover {
+    text-decoration: underline;
+}
